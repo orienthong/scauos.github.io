@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="面试," />
+  <meta name="keywords" content="源码阅读," />
 
 
 
@@ -94,20 +94,18 @@
 
 
 
-<meta name="description" content="今天赴了腾讯高工的面试邀请，去了微信总部，体验了一次大公司的工作氛围，去的时候两只微信表情狗确实很显眼的，可能成为微信的一种象征了吧。 面试地点是T.I.T创意园，微信总部B2楼。微信的总部风格很别具一格，跟大公司的好像不太一样，好吧，实话说我没去过什么大公司。总部的风格很像美国硅谷，厂房式的办公环境，很多人都在一楼办公厅，对着屏幕，啪啪啪地敲着代码，整栋楼都是piapiapia的键盘声，没听到有">
-<meta name="keywords" content="面试">
+<meta name="description" content="Init的方式 12345678910111213141516171819202122232425262728293031323334353637①public init(data: Data, options opt: JSONSerialization.ReadingOptions = []) throws &amp;#123;        let object: Any = try JSONSer">
+<meta name="keywords" content="源码阅读">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wxg初试">
-<meta property="og:url" content="http://scauos.github.io/2018/08/01/wxg初试/index.html">
+<meta property="og:title" content="读SwiftyJSON源码">
+<meta property="og:url" content="http://scauos.github.io/2018/08/11/读SwiftyJSON源码/index.html">
 <meta property="og:site_name" content="大朕东のBlog">
-<meta property="og:description" content="今天赴了腾讯高工的面试邀请，去了微信总部，体验了一次大公司的工作氛围，去的时候两只微信表情狗确实很显眼的，可能成为微信的一种象征了吧。 面试地点是T.I.T创意园，微信总部B2楼。微信的总部风格很别具一格，跟大公司的好像不太一样，好吧，实话说我没去过什么大公司。总部的风格很像美国硅谷，厂房式的办公环境，很多人都在一楼办公厅，对着屏幕，啪啪啪地敲着代码，整栋楼都是piapiapia的键盘声，没听到有">
+<meta property="og:description" content="Init的方式 12345678910111213141516171819202122232425262728293031323334353637①public init(data: Data, options opt: JSONSerialization.ReadingOptions = []) throws &amp;#123;        let object: Any = try JSONSer">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/0069RVTdgy1ftujorqrdpj30m40u81bc.jpg">
-<meta property="og:updated_time" content="2018-08-01T15:50:10.627Z">
+<meta property="og:updated_time" content="2018-08-10T17:12:25.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wxg初试">
-<meta name="twitter:description" content="今天赴了腾讯高工的面试邀请，去了微信总部，体验了一次大公司的工作氛围，去的时候两只微信表情狗确实很显眼的，可能成为微信的一种象征了吧。 面试地点是T.I.T创意园，微信总部B2楼。微信的总部风格很别具一格，跟大公司的好像不太一样，好吧，实话说我没去过什么大公司。总部的风格很像美国硅谷，厂房式的办公环境，很多人都在一楼办公厅，对着屏幕，啪啪啪地敲着代码，整栋楼都是piapiapia的键盘声，没听到有">
-<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/0069RVTdgy1ftujorqrdpj30m40u81bc.jpg">
+<meta name="twitter:title" content="读SwiftyJSON源码">
+<meta name="twitter:description" content="Init的方式 12345678910111213141516171819202122232425262728293031323334353637①public init(data: Data, options opt: JSONSerialization.ReadingOptions = []) throws &amp;#123;        let object: Any = try JSONSer">
 
 
 
@@ -136,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://scauos.github.io/2018/08/01/wxg初试/"/>
+  <link rel="canonical" href="http://scauos.github.io/2018/08/11/读SwiftyJSON源码/"/>
 
 
 
 
 
-  <title>wxg初试 | 大朕东のBlog</title>
+  <title>读SwiftyJSON源码 | 大朕东のBlog</title>
   
 
 
@@ -265,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://scauos.github.io/2018/08/01/wxg初试/">
+    <link itemprop="mainEntityOfPage" href="http://scauos.github.io/2018/08/11/读SwiftyJSON源码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Oriend">
@@ -282,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">wxg初试</h1>
+          <h1 class="post-title" itemprop="name headline">读SwiftyJSON源码</h1>
         
 
         <div class="post-meta">
@@ -294,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-01T21:42:13+08:00">
-                2018-08-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-11T00:29:17+08:00">
+                2018-08-11
               </time>
             
 
@@ -313,9 +311,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/01/wxg初试/#comments" itemprop="discussionUrl">
+                <a href="/2018/08/11/读SwiftyJSON源码/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/01/wxg初试/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/08/11/读SwiftyJSON源码/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -323,7 +321,7 @@
 
           
           
-             <span id="/2018/08/01/wxg初试/" class="leancloud_visitors" data-flag-title="wxg初试">
+             <span id="/2018/08/11/读SwiftyJSON源码/" class="leancloud_visitors" data-flag-title="读SwiftyJSON源码">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -354,28 +352,12 @@
       
 
       
-        <p>今天赴了腾讯高工的面试邀请，去了微信总部，体验了一次大公司的工作氛围，去的时候两只微信表情狗确实很显眼的，可能成为微信的一种象征了吧。</p>
-<p>面试地点是T.I.T创意园，微信总部B2楼。微信的总部风格很别具一格，跟大公司的好像不太一样，好吧，实话说我没去过什么大公司。总部的风格很像美国硅谷，厂房式的办公环境，很多人都在一楼办公厅，对着屏幕，啪啪啪地敲着代码，整栋楼都是piapiapia的键盘声，没听到有人在讨论。</p>
-<p>面试的时候，那位微信高工预定了一个10人的会议室，感觉有点太看重我了。</p>
-<h2 id="面试过程"><a href="#面试过程" class="headerlink" title="面试过程"></a>面试过程</h2><p>开始就给了3页纸的c语言面试题，拿到手里看了一下题目，感觉自己大学白学了就是了。</p>
-<ul>
-<li>题目涉及到c语言的我基本都不会</li>
-<li>考的算法题是，有n个数字，求组合数最小值，比如32和321组合最小为32132</li>
-<li>怎么判断链表存在环</li>
-<li>快排的原理</li>
-</ul>
-<p>感觉这些真的很基础，但是我基本没回答上来。</p>
-<h4 id="接着面试项目经历"><a href="#接着面试项目经历" class="headerlink" title="接着面试项目经历"></a>接着面试项目经历</h4><p>一开始就问，我的黑暗实习经历，垃圾公司坑人的实习，做完还不给钱那种。吐槽完毕，问我这个app是干什么的，说实话，我也不知道他们这个app有什么用，完全颠覆了我对app的看法，那时候做的也贼难受。所以这个项目回答得也不怎么好。</p>
-<p>第二个是问苹果奖学金项目，问到矩阵运算，好吧，我忘了，我知道有，而且我还了解过，但是我就是忘了。结果尴尬的演示了一下游戏，然后说一下BFS算法实现迷宫算法就过了。</p>
-<p>第三个是问到小程序开发，小程序开发流程解释一下，我感觉答非所问，我记得我回答我是怎么学习小程序开发的，到最后才提了一下流程，而且还说不怎么好，因为流程不都是HTLML+CSS+JS嘛，只不过微信用了自己的一套语言，不过语法都是一样的，跟HTML开发差不多吧。</p>
-<p>第四个是问到最近在做的倚桐小程序的开发，因为我还没开始写小程序前端，所以，我也没回答什么。</p>
-<h2 id="感触"><a href="#感触" class="headerlink" title="感触"></a>感触</h2><p>其实在来微信前，我就知道自己已经凉了，毕竟很久没写代码了，连基本的C语言都不会写了，还想进腾讯？天真了。</p>
-<p>晚上的时候收到了面试官的微信</p>
-<p><img src="https://ws4.sinaimg.cn/large/0069RVTdgy1ftujorqrdpj30m40u81bc.jpg" alt="聊天记录"></p>
-<p>非常感谢面试官的耐心了，真的很辜负了他的希望了吧，他可能真的觉得我很厉害，但是我自己心里其实有底的。其实几次推辞面试的，但是最后还是去了，虽然被虐的很惨，但是学到了不少东西吧。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>知道自己实力了，为了能去大公司学到东西，那就努力吧！希望自己能回到大一那个充满热情的我，不能再懒惰，不能再痴情，把时间放在以后的事业上，变成更强的人。</p>
-<p>～～～</p>
-<h2 id="Write-the-code，change-the-world"><a href="#Write-the-code，change-the-world" class="headerlink" title="Write the code，change the world!"></a>Write the code，change the world!</h2>
+        <p>Init的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">①</span><br><span class="line">public init(data: Data, options opt: JSONSerialization.ReadingOptions = []) throws &#123;</span><br><span class="line">        let object: Any = try JSONSerialization.jsonObject(with: data, options: opt)</span><br><span class="line">        self.init(jsonObject: object)</span><br><span class="line">    &#125;</span><br><span class="line">//通过JSONSerialization初始化object：Any</span><br><span class="line"></span><br><span class="line">② //比较常用的初始化方法，</span><br><span class="line">public init(_ object: Any) &#123;</span><br><span class="line">        switch object &#123;</span><br><span class="line">        case let object as Data:</span><br><span class="line">            do &#123;</span><br><span class="line">                try self.init(data: object)</span><br><span class="line">            &#125; catch &#123;</span><br><span class="line">                self.init(jsonObject: NSNull())</span><br><span class="line">            &#125;</span><br><span class="line">        default:</span><br><span class="line">            self.init(jsonObject: object)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">③</span><br><span class="line">public init(parseJSON jsonString: String) &#123;</span><br><span class="line">		if let data = jsonString.data(using: .utf8) &#123;</span><br><span class="line">			self.init(data)</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			self.init(NSNull())</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">//先把String转换成.utf8格式的data，再调用以上初始化方法</span><br><span class="line"></span><br><span class="line">④ 还有一个fileprivate的初始化方法，</span><br><span class="line">fileprivate init(jsonObject: Any) &#123;</span><br><span class="line">        self.object = jsonObject</span><br><span class="line">    &#125;</span><br><span class="line">//这里的jsonObject必须遵守规则	 </span><br><span class="line">- parameter jsonObject:  The object must have the following properties: All objects are NSString/String, NSNumber/Int/Float/Double/Bool, NSArray/Array, NSDictionary/Dictionary, or NSNull; All dictionary keys are NSStrings/String; NSNumbers are not NaN or infinity.</span><br></pre></td></tr></table></figure>
+<h2 id="关于merge方法2️⃣"><a href="#关于merge方法2️⃣" class="headerlink" title="关于merge方法2️⃣"></a>关于merge方法2️⃣</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Merges another JSON into this JSON and returns a new JSON, whereas primitive values which are not present in this JSON are getting added,</span><br><span class="line">	 present values getting overwritten, array values getting appended and nested JSONS getting merged the same way.</span><br></pre></td></tr></table></figure>
+<p>源码分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">① 真正工作的方法</span><br><span class="line">作者通过对other的key值和self的key值对比，如果是字典就再递归，并不去检查key对应属性，因为merge只检查顶层属性。</span><br><span class="line">fileprivate mutating func merge(with other: JSON, typecheck: Bool) throws &#123;</span><br><span class="line">        if self.type == other.type &#123;</span><br><span class="line">            switch self.type &#123;</span><br><span class="line">            case .dictionary:</span><br><span class="line">                for (key, _) in other &#123;</span><br><span class="line">                    try self[key].merge(with: other[key], typecheck: false)</span><br><span class="line">                &#125;</span><br><span class="line">            case .array:</span><br><span class="line">                self = JSON(self.arrayValue + other.arrayValue)</span><br><span class="line">            default:</span><br><span class="line">                self = other</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if typecheck &#123;</span><br><span class="line">                throw SwiftyJSONError.wrongType</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                self = other</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">② 使用mutating是直接修改了self的object值</span><br><span class="line">public mutating func merge(with other: JSON) throws &#123;</span><br><span class="line">        try self.merge(with: other, typecheck: true)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">③ merged是返回新的json数据</span><br><span class="line">public func merged(with other: JSON) throws -&gt; JSON &#123;</span><br><span class="line">        var merged = self</span><br><span class="line">        try merged.merge(with: other, typecheck: true)</span><br><span class="line">        return merged</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">//注意merge和merged的区别</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -392,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/public/tags/面试/" rel="tag"># 面试</a>
+            <a href="/public/tags/源码阅读/" rel="tag"># 源码阅读</a>
           
         </div>
       
@@ -405,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/21/我是如何拿到WWDC18奖学金的/" rel="next" title="我是如何拿到WWDC18奖学金的">
-                <i class="fa fa-chevron-left"></i> 我是如何拿到WWDC18奖学金的
+              <a href="/2018/08/10/找到实习/" rel="next" title="找到实习">
+                <i class="fa fa-chevron-left"></i> 找到实习
               </a>
             
           </div>
@@ -414,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/02/147-对链表进行插入排序/" rel="prev" title="147.对链表进行插入排序">
-                147.对链表进行插入排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -549,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面试过程"><span class="nav-number">1.</span> <span class="nav-text">面试过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接着面试项目经历"><span class="nav-number">1.0.1.</span> <span class="nav-text">接着面试项目经历</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感触"><span class="nav-number">2.</span> <span class="nav-text">感触</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">3.</span> <span class="nav-text">写在最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Write-the-code，change-the-world"><span class="nav-number">4.</span> <span class="nav-text">Write the code，change the world!</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于merge方法2️⃣"><span class="nav-number">1.</span> <span class="nav-text">关于merge方法2️⃣</span></a></li></ol></div>
             
 
           </div>
@@ -699,9 +677,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://scauos.github.io/2018/08/01/wxg初试/';
-          this.page.identifier = '2018/08/01/wxg初试/';
-          this.page.title = 'wxg初试';
+          this.page.url = 'http://scauos.github.io/2018/08/11/读SwiftyJSON源码/';
+          this.page.identifier = '2018/08/11/读SwiftyJSON源码/';
+          this.page.title = '读SwiftyJSON源码';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://scauos.disqus.com/embed.js';
