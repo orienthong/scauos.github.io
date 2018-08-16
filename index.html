@@ -260,6 +260,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://scauos.github.io/2018/08/16/97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Oriend">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大朕东のBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/16/97/" itemprop="url">LeetCode-Weekly Contest 97</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-16T15:26:16+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/16/97/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/16/97/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/16/97/" class="leancloud_visitors" data-flag-title="LeetCode-Weekly Contest 97">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://ws4.sinaimg.cn/large/0069RVTdgy1fubkpskdgej30xn0fagnt.jpg" alt=""><br>第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。</p>
+<p>Swift代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    func uncommonFromSentences(_ A: String, _ B: String) -&gt; [String] &#123;</span><br><span class="line">        var solution: [String] = []</span><br><span class="line">        let a_character = A.components(separatedBy: &quot; &quot;)</span><br><span class="line">        let b_character = B.components(separatedBy: &quot; &quot;)</span><br><span class="line">        let c_character = a_character + b_character</span><br><span class="line">        let sort_character = c_character.sorted()</span><br><span class="line">        print(sort_character)</span><br><span class="line">        var i = 0</span><br><span class="line">        var j = 0</span><br><span class="line">        while i &lt; sort_character.count-1 &#123;</span><br><span class="line">            if sort_character[i] != sort_character[i+1] &#123;</span><br><span class="line">                solution.append(sort_character[i])</span><br><span class="line">                i += 1</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                j = i+1</span><br><span class="line">                while j &lt; sort_character.count &amp;&amp; i &lt; sort_character.count &#123;</span><br><span class="line">                    if sort_character[j] != sort_character[i] &#123;</span><br><span class="line">                        i = j</span><br><span class="line">                        break</span><br><span class="line">                    &#125;</span><br><span class="line">                    j += 1</span><br><span class="line">                    i += 1</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //需要注意最后一个要和上一个比较，因为最后一个单词在上一个循环中没有进行比较就退出了</span><br><span class="line">        if sort_character[i] != sort_character[i-1] &#123;</span><br><span class="line">            solution.append(sort_character[i])</span><br><span class="line">        &#125;</span><br><span class="line">        return solution</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://scauos.github.io/2018/08/11/读SwiftyJSON源码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1098,7 +1241,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
