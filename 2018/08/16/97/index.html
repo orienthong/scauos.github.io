@@ -94,18 +94,19 @@
 
 
 
-<meta name="description" content="第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。 Swift代码如下： 12345678910111213141516171819202122232425262728293031323334class Solution &amp;#123;    func uncommonFromSentences(_ A: String,">
+<meta name="description" content="第一题： 888. 两句话中的不常见单词第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。 Swift代码如下： 12345678910111213141516171819202122232425262728293031323334class Solution &amp;#123;    func uncommonFromSe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-Weekly Contest 97">
 <meta property="og:url" content="http://scauos.github.io/2018/08/16/97/index.html">
 <meta property="og:site_name" content="大朕东のBlog">
-<meta property="og:description" content="第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。 Swift代码如下： 12345678910111213141516171819202122232425262728293031323334class Solution &amp;#123;    func uncommonFromSentences(_ A: String,">
+<meta property="og:description" content="第一题： 888. 两句话中的不常见单词第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。 Swift代码如下： 12345678910111213141516171819202122232425262728293031323334class Solution &amp;#123;    func uncommonFromSe">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/0069RVTdgy1fubkpskdgej30xn0fagnt.jpg">
-<meta property="og:updated_time" content="2018-08-16T07:31:28.453Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/0069RVTdgy1fubl0h43qaj30xg0metbi.jpg">
+<meta property="og:updated_time" content="2018-08-16T08:06:54.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode-Weekly Contest 97">
-<meta name="twitter:description" content="第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。 Swift代码如下： 12345678910111213141516171819202122232425262728293031323334class Solution &amp;#123;    func uncommonFromSentences(_ A: String,">
+<meta name="twitter:description" content="第一题： 888. 两句话中的不常见单词第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。 Swift代码如下： 12345678910111213141516171819202122232425262728293031323334class Solution &amp;#123;    func uncommonFromSe">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/0069RVTdgy1fubkpskdgej30xn0fagnt.jpg">
 
 
@@ -353,9 +354,13 @@
       
 
       
-        <p><img src="https://ws4.sinaimg.cn/large/0069RVTdgy1fubkpskdgej30xn0fagnt.jpg" alt=""><br>第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。</p>
+        <h3 id="第一题：-888-两句话中的不常见单词"><a href="#第一题：-888-两句话中的不常见单词" class="headerlink" title="第一题： 888. 两句话中的不常见单词"></a>第一题： 888. 两句话中的不常见单词</h3><p><img src="https://ws4.sinaimg.cn/large/0069RVTdgy1fubkpskdgej30xn0fagnt.jpg" alt=""><br>第一题只要将两个数组组合在一起，一次sort之后，从第一个开始往后比较，如果下一个和上一个相同，则说明是常见的，继续往后比较即可。</p>
 <p>Swift代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    func uncommonFromSentences(_ A: String, _ B: String) -&gt; [String] &#123;</span><br><span class="line">        var solution: [String] = []</span><br><span class="line">        let a_character = A.components(separatedBy: &quot; &quot;)</span><br><span class="line">        let b_character = B.components(separatedBy: &quot; &quot;)</span><br><span class="line">        let c_character = a_character + b_character</span><br><span class="line">        let sort_character = c_character.sorted()</span><br><span class="line">        print(sort_character)</span><br><span class="line">        var i = 0</span><br><span class="line">        var j = 0</span><br><span class="line">        while i &lt; sort_character.count-1 &#123;</span><br><span class="line">            if sort_character[i] != sort_character[i+1] &#123;</span><br><span class="line">                solution.append(sort_character[i])</span><br><span class="line">                i += 1</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                j = i+1</span><br><span class="line">                while j &lt; sort_character.count &amp;&amp; i &lt; sort_character.count &#123;</span><br><span class="line">                    if sort_character[j] != sort_character[i] &#123;</span><br><span class="line">                        i = j</span><br><span class="line">                        break</span><br><span class="line">                    &#125;</span><br><span class="line">                    j += 1</span><br><span class="line">                    i += 1</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //需要注意最后一个要和上一个比较，因为最后一个单词在上一个循环中没有进行比较就退出了</span><br><span class="line">        if sort_character[i] != sort_character[i-1] &#123;</span><br><span class="line">            solution.append(sort_character[i])</span><br><span class="line">        &#125;</span><br><span class="line">        return solution</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第二题：889-螺旋矩阵-III"><a href="#第二题：889-螺旋矩阵-III" class="headerlink" title="第二题：889. 螺旋矩阵 III"></a>第二题：889. 螺旋矩阵 III</h3><p><img src="https://ws2.sinaimg.cn/large/0069RVTdgy1fubl0h43qaj30xg0metbi.jpg" alt="889. 螺旋矩阵 III"></p>
+<p>这道题发现感觉是在找规律，每次遇到向右或者向左，就多走一个步，并以当前步数重新来一次循环，循环顺序很容易发现是-➡️-⤵️-⬅️-⤴️！</p>
+<p>Swift代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    func isCorrect(_ R: Int, _ C: Int, _ r0: Int, _ c0: Int) -&gt; Bool &#123;</span><br><span class="line">        return r0 &lt; R &amp;&amp; r0 &gt; -1 &amp;&amp; c0 &lt; C &amp;&amp; c0 &gt; -1</span><br><span class="line">    &#125;</span><br><span class="line">    func spiralMatrixIII(_ R: Int, _ C: Int, _ r0: Int, _ c0: Int) -&gt; [[Int]] &#123;</span><br><span class="line">        var solution: [[Int]] = []</span><br><span class="line">        let total = R * C</span><br><span class="line">        var current = 1</span><br><span class="line">        var i = r0</span><br><span class="line">        var j = c0</span><br><span class="line">        var steps = 0</span><br><span class="line">        solution.append([r0, c0])</span><br><span class="line">        while current &lt; total &#123;</span><br><span class="line">            // turn right</span><br><span class="line">            steps += 1</span><br><span class="line">            for _ in 0 ..&lt; steps &#123;</span><br><span class="line">                j += 1</span><br><span class="line">                if isCorrect(R, C, i, j) &#123;</span><br><span class="line">                    solution.append([i, j])</span><br><span class="line">                    current += 1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            // go down</span><br><span class="line">            for _ in 0 ..&lt; steps &#123;</span><br><span class="line">                i += 1</span><br><span class="line">                if isCorrect(R, C, i, j) &#123;</span><br><span class="line">                    solution.append([i, j])</span><br><span class="line">                    current += 1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            steps += 1</span><br><span class="line">            // move left</span><br><span class="line">            for _ in 0 ..&lt; steps &#123;</span><br><span class="line">                j -= 1</span><br><span class="line">                if isCorrect(R, C, i, j) &#123;</span><br><span class="line">                    solution.append([i, j])</span><br><span class="line">                    current += 1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            // move up</span><br><span class="line">            for _ in 0 ..&lt; steps &#123;</span><br><span class="line">                i -= 1</span><br><span class="line">                if isCorrect(R, C, i, j) &#123;</span><br><span class="line">                    solution.append([i, j])</span><br><span class="line">                    current += 1</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return solution</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -446,8 +451,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar1.jpg"
@@ -500,6 +514,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一题：-888-两句话中的不常见单词"><span class="nav-number">1.</span> <span class="nav-text">第一题： 888. 两句话中的不常见单词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二题：889-螺旋矩阵-III"><span class="nav-number">2.</span> <span class="nav-text">第二题：889. 螺旋矩阵 III</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
