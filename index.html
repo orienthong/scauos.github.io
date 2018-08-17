@@ -260,6 +260,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://scauos.github.io/2018/08/18/98 验证二叉搜索树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Oriend">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大朕东のBlog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/98 验证二叉搜索树/" itemprop="url">验证二叉搜索树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T00:39:07+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/18/98 验证二叉搜索树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/18/98 验证二叉搜索树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/18/98 验证二叉搜索树/" class="leancloud_visitors" data-flag-title="验证二叉搜索树">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>这两天做了一道深度优先算法的题，被搞得很晕，发现我基本功真的差，于是乎，刷几道LeetCode上关于深度优先算法的题目</strong></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fud6ad9ji8j31kw0zkn4o.jpg" alt="98 验证二叉搜索树"></p>
+<p>这道题采用的是中序遍历，比较当前遍历的值和上一次遍历的值，如果后遍历的值小于等于上一个遍历的值，说明不是二叉搜索树，这也是这道题的精妙之处吧，一开始没想出来，找了一些博客研究了下解法。</p>
+<p>下面是Swift的实现版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    func isValidBST(_ root: TreeNode?) -&gt; Bool &#123;</span><br><span class="line">        guard root != nil else &#123; return true &#125;</span><br><span class="line">        var value: Int = 0</span><br><span class="line">        var isFirst = true</span><br><span class="line">        return inorderTraversal(root!, &amp;value, &amp;isFirst)</span><br><span class="line">    &#125;</span><br><span class="line">    func inorderTraversal(_ root: TreeNode, _ value: inout Int, _ isFirst: inout Bool) -&gt; Bool &#123;</span><br><span class="line">        </span><br><span class="line">        if root.left != nil &#123;</span><br><span class="line">            if !inorderTraversal(root.left!, &amp;value, &amp;isFirst) &#123;</span><br><span class="line">                return false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if isFirst &#123;</span><br><span class="line">            isFirst = false</span><br><span class="line">            value = root.val</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if value &gt;= root.val &#123; return false &#125;</span><br><span class="line">            else &#123; value = root.val &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if root.right != nil &#123;</span><br><span class="line">            if !inorderTraversal(root.right!, &amp;value, &amp;isFirst) &#123;</span><br><span class="line">                return false</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://scauos.github.io/2018/08/17/七夕-穷/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -358,8 +503,7 @@
 <p><strong>拿了个WWDC奖学金，也不见得自信起来了。</strong></p>
 <p>对颜小姐我感觉她活在我的梦里，时隐时现，有时候感觉像是在谈恋爱，有时候觉得像陌生人。一切都怪我没有一次正式的表白，然而，现在或许已经没有机会了，我拿什么去表白。感性的人可能会想，拿自己的心啊。😔我是个理性的人，想什么都很理性，穷也能拥有什么爱情。</p>
 <p>摸摸口袋，填饱肚子先。</p>
-<p>突感生活不易，还是读书好啊。</p>
-
+<h3 id="突感生活不易，还是读书好啊。"><a href="#突感生活不易，还是读书好啊。" class="headerlink" title="突感生活不易，还是读书好啊。"></a>突感生活不易，还是读书好啊。</h3>
           
         
       
@@ -1394,7 +1538,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1407,7 +1551,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
